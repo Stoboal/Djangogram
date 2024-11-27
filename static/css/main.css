@@ -1,0 +1,88 @@
+/* MAIN PAGE */
+body {
+    margin: 0;
+    font-family: Montserrat, Arial, sans-serif;
+    color: #333333;
+    background-image: linear-gradient(to bottom, #FFF0F5, #F5F5DC);
+    background-attachment: fixed;
+    display: flex;
+}
+
+
+/* FORMS PAGES */
+
+#form{
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+
+}
+#form fieldset{
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 30%;
+    position: relative;
+}
+#form input{
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Montserrat, Arial, sans-serif;
+    color: #2C3E50;
+    font-size: 18px;
+    text-align: center;
+}
+.fs-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2C3E50;
+}
+
+.menu-item.form-button{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+/* ERROR FIELD */
+
+.error-box {
+    position: fixed;
+    top: 5%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+.error-box p {
+    margin: 0;
+}
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}

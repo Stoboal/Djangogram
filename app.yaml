@@ -1,0 +1,14 @@
+runtime: python312
+
+entrypoint: gunicorn -b :$PORT Djangogramm.wsgi:application
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "Djangogramm.settings.production"
+
+handlers:
+- url: /static
+  static_dir: staticfiles
+- url: /.*
+  script: auto
+- url: /media
+  static_dir: media

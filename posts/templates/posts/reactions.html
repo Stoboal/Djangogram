@@ -1,0 +1,54 @@
+{% extends "posts/base.html" %}
+{% load custom_filters %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="row">
+            {% if reactions %}
+                {% for reaction in reactions %}
+                    {% if reaction.text %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ reaction.user.username | title }} commented your <a href="{% url 'post_page' reaction.post.id %}">post</a>:</h5>
+                                    <p class="card-text">{{ reaction.text }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ reaction.created_at | custom_timesince }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif reaction.post %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ reaction.user.username | title }} liked your <a href="{% url 'post_page' reaction.post.id %}">post</a></h5>
+                                    <p class="card-text"><small class="text-muted">{{ reaction.created_at | custom_timesince }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif reaction.comment %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ reaction.user.username | title }} liked your <a href="{% url 'post_page' reaction.comment.post.id %}">comment</a></h5>
+                                    <p class="card-text"><small class="text-muted">{{ reaction.created_at | custom_timesince }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif reaction.follower %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{% url 'user_page' reaction.follower %}">{{ reaction.follower | title }}</a> subscribed for your channel</h5>
+                                    <p class="card-text"><small class="text-muted">{{ reaction.created_at | custom_timesince }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p class="text-center fs-3">You have no reactions yet :(</p>
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="text-center fs-3">Content available only for logged users</p>
+    {% endif %}
+{% endblock %}
